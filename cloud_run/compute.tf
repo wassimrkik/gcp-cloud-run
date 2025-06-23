@@ -1,8 +1,8 @@
 resource "google_cloud_run_v2_service" "default" {
-  name     = var.service-name
-  location = "europe-west9"
+  name                = var.service-name
+  location            = "europe-west9"
   deletion_protection = false
-  ingress = "INGRESS_TRAFFIC_ALL"
+  ingress             = "INGRESS_TRAFFIC_ALL"
 
   template {
     containers {
