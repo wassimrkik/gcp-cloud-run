@@ -14,7 +14,7 @@ jobs:
         - name: Google Cloud Auth
           uses: 'google-github-actions/auth@v2'
           with:
-            credentials_json: '${secrets.GCP_SA_KEY}'
+            credentials_json: ${secrets.GCP_SA_KEY}
             project_id: 'patricio-poc-1'
 
         - name: Install terraform
