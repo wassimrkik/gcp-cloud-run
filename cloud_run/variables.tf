@@ -14,11 +14,11 @@ variable "service-name" {
 }
 
 variable "public_access" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "limits" {
   default = true
-  type = bool
+  type    = bool
 }

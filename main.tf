@@ -16,3 +16,4 @@ module "cori-be" {
   service-name     = "be-poc-cori"
   public_access    = false
 }
+

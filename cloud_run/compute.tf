@@ -31,7 +31,7 @@ data "google_iam_policy" "noauth" {
 }
 
 resource "google_cloud_run_service_iam_policy" "noauth" {
-  count = var.public_access == true ? 1 : 0
+  count       = var.public_access == true ? 1 : 0
   location    = "europe-west9"
   service     = google_cloud_run_v2_service.default.name
   policy_data = data.google_iam_policy.noauth.policy_data
