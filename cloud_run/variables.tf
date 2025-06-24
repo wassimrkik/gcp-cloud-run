@@ -12,3 +12,13 @@ variable "repo-location" {
 variable "service-name" {
 
 }
+
+variable "public_access" {
+  type = bool
+  default = false
+}
+
+variable "limits" {
+  default = true
+  type = bool
+}

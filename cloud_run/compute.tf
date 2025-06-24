@@ -6,17 +6,16 @@ resource "google_cloud_run_v2_service" "default" {
 
   template {
     containers {
-      image = "europe-docker.pkg.dev/${var.repo-name}/container/hello"
-      resources {
-        limits = {
-          cpu    = "2"
-          memory = "1024Mi"
+      image = "us-docker.pkg.dev/cloudrun/container/hello"
+
+      dynamic "resources" {
+        for_each = var.limits ? [1] : []
+        content {
+          limits = {
+            cpu    = "2"
+            memory = "1024Mi"
+          }
         }
-      }
-    }
-    vpc_access {
-      network_interfaces {
-        network = google_compute_network.vpc_network.id
       }
     }
   }
@@ -32,7 +31,8 @@ data "google_iam_policy" "noauth" {
 }
 
 resource "google_cloud_run_service_iam_policy" "noauth" {
-  location    = "us-central1"
+  count = var.public_access == true ? 1 : 0
+  location    = "europe-west9"
   service     = google_cloud_run_v2_service.default.name
   policy_data = data.google_iam_policy.noauth.policy_data
 }
