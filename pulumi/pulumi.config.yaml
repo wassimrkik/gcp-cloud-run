@@ -1,0 +1,4 @@
+config:
+  your_project:service_name: "your-service"
+  your_project:limits: true
+  your_project:public_access: true

@@ -5,9 +5,26 @@ resource "google_cloud_run_v2_service" "default" {
   ingress             = "INGRESS_TRAFFIC_ALL"
 
   template {
+    dynamic "volumes" {
+      for_each = var.database ? [1] : []
+      content {
+        name = "cloudsql"
+        cloud_sql_instance {
+          instances = [google_sql_database_instance.instance[0].connection_name]
+        }
+      }
+    }
     containers {
       image = "us-docker.pkg.dev/cloudrun/container/hello"
 
+      dynamic "volume_mounts" {
+        for_each = var.database ? [1] : []
+        content {
+          name       = "cloudsql"
+          mount_path = "/cloudsql"
+        }
+      }
+    
       dynamic "resources" {
         for_each = var.limits ? [1] : []
         content {

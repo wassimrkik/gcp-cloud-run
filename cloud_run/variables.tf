@@ -22,3 +22,11 @@ variable "limits" {
   default = true
   type    = bool
 }
+
+variable "database_name" {
+  default = null
+}
+variable "database" {
+  default = false
+  type    = bool
+}
