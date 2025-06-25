@@ -4,7 +4,3 @@
 #   mtu                     = 1460
 #   auto_create_subnetworks = false
 # }
-
-resource "" "name" {
-  
-}
