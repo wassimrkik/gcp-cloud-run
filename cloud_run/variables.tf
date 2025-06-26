@@ -32,7 +32,7 @@ variable "region" {
 }
 
 variable "ssl" {
-  type = bool
+  type    = bool
   default = true
 }
 
