@@ -5,10 +5,6 @@ variable "repo-description" {
   type = string
 }
 
-variable "repo-location" {
-  type = string
-}
-
 variable "service-name" {
 
 }
@@ -29,4 +25,25 @@ variable "database_name" {
 variable "database" {
   default = false
   type    = bool
+}
+
+variable "region" {
+  default = "europe-west9"
+}
+
+variable "ssl" {
+  type = bool
+  default = true
+}
+
+variable "domain" {
+  type = string
+}
+
+variable "lb_name" {
+  type = string
+}
+
+variable "project_id" {
+  default = "patricio-poc-1"
 }

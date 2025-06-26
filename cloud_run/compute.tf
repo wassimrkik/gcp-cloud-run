@@ -1,6 +1,6 @@
 resource "google_cloud_run_v2_service" "default" {
   name                = var.service-name
-  location            = "europe-west9"
+  location            = var.region
   deletion_protection = false
   ingress             = "INGRESS_TRAFFIC_ALL"
 
@@ -24,7 +24,7 @@ resource "google_cloud_run_v2_service" "default" {
           mount_path = "/cloudsql"
         }
       }
-    
+
       dynamic "resources" {
         for_each = var.limits ? [1] : []
         content {
@@ -49,7 +49,7 @@ data "google_iam_policy" "noauth" {
 
 resource "google_cloud_run_service_iam_policy" "noauth" {
   count       = var.public_access == true ? 1 : 0
-  location    = "europe-west9"
+  location    = var.region
   service     = google_cloud_run_v2_service.default.name
   policy_data = data.google_iam_policy.noauth.policy_data
 }
