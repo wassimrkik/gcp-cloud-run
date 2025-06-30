@@ -1,6 +1,6 @@
 provider "google" {
   project = "patricio-poc-1"
-  region  = "europe-west9"
+  region  = "europe-west1"
   #zone        = "europe-west9-a"
 }
 

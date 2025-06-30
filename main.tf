@@ -8,6 +8,7 @@ module "cori-fe" {
   limits           = false
   lb_name          = "front"
   domain           = "front.cloudwaves.net"
+  service-account  = google_service_account.default.email
 }
 
 module "cori-be" {
@@ -22,6 +23,8 @@ module "cori-be" {
   database_name    = "be-sql"
   lb_name          = "back"
   domain           = "back.cloudwaves.net"
+  service-account  = null
+  sql_password     = "testtesttest"
 }
 
 module "cori-addin" {
@@ -34,4 +37,29 @@ module "cori-addin" {
   limits           = false
   lb_name          = "addin"
   domain           = "addin.cloudwaves.net"
+  service-account  = google_service_account.default.email
+}
+
+data "google_iam_policy" "private" {
+  binding {
+    role = "roles/run.invoker"
+    members = [
+      "serviceAccount:${google_service_account.default.email}",
+    ]
+  }
+}
+
+resource "google_cloud_run_service_iam_policy" "private" {
+  location    = "europe-west1"
+  project     = "patricio-poc-1"
+  service     = "be-poc-cori"
+  policy_data = data.google_iam_policy.private.policy_data
+  depends_on = [ module.cori-be ]
+}
+
+resource "google_service_account" "default" {
+  depends_on = [ module.cori-be ]
+  account_id   = "cloud-run-interservice-id"
+  description  = "Identity used by a public Cloud Run service to call private Cloud Run services."
+  display_name = "cloud-run-interservice-id"
 }

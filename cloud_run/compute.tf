@@ -5,6 +5,7 @@ resource "google_cloud_run_v2_service" "default" {
   ingress             = "INGRESS_TRAFFIC_ALL"
 
   template {
+    service_account = var.service-account
     dynamic "volumes" {
       for_each = var.database ? [1] : []
       content {

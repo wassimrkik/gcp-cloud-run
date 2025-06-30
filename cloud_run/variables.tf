@@ -47,3 +47,12 @@ variable "lb_name" {
 variable "project_id" {
   default = "patricio-poc-1"
 }
+
+variable "service-account" {
+  type = string
+}
+
+variable "sql_password" {
+  type = string
+  default = "stronpassword"
+}
