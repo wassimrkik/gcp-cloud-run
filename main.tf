@@ -7,7 +7,7 @@ module "cori-fe" {
   public_access     = true
   limits            = false
   lb_name           = "front"
-  domain            = "front.cloudwaves.net"
+  domain            = "front.${var.domain}"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_fe.json"
   secrets           = local.fe_service_secrets
@@ -24,7 +24,7 @@ module "cori-be" {
   database          = true
   database_name     = "be-sql"
   lb_name           = "back"
-  domain            = "back.cloudwaves.net"
+  domain            = "back.${var.domain}"
   service-account   = null
   sql_password      = var.PGPASSWORD
   env_file_override = "${path.module}/envs/env_be.json"
@@ -40,7 +40,7 @@ module "cori-addin" {
   public_access     = true
   limits            = false
   lb_name           = "addin"
-  domain            = "addin.cloudwaves.net"
+  domain            = "addin.${var.domain}"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_addin.json"
   secrets           = local.addin_service_secrets
@@ -57,7 +57,7 @@ data "google_iam_policy" "private" {
 
 resource "google_cloud_run_service_iam_policy" "private" {
   location    = "europe-west1"
-  project     = "patricio-poc-1"
+  project     = "cori-clinical"
   service     = "be-poc-cori"
   policy_data = data.google_iam_policy.private.policy_data
   depends_on  = [module.cori-be]

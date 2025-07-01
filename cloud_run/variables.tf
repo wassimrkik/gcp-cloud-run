@@ -45,7 +45,7 @@ variable "lb_name" {
 }
 
 variable "project_id" {
-  default = "patricio-poc-1"
+  default = "cori-clinical"
 }
 
 variable "service-account" {
@@ -54,7 +54,6 @@ variable "service-account" {
 
 variable "sql_password" {
   type    = string
-  default = "stronpassword"
 }
 
 variable "env_file_override" {

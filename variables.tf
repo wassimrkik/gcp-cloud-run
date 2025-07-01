@@ -80,5 +80,10 @@ variable "AZURE_TENANT_ID" {
 
 variable "project_id" {
   type    = string
-  default = "patricio-poc-1"
+  default = "cori-clinical"
+}
+
+variable "domain" {
+  type = string
+  default = "cori-clinical.com"
 }
