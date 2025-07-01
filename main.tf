@@ -54,11 +54,11 @@ resource "google_cloud_run_service_iam_policy" "private" {
   project     = "patricio-poc-1"
   service     = "be-poc-cori"
   policy_data = data.google_iam_policy.private.policy_data
-  depends_on = [ module.cori-be ]
+  depends_on  = [module.cori-be]
 }
 
 resource "google_service_account" "default" {
-  depends_on = [ module.cori-be ]
+  depends_on   = [module.cori-be]
   account_id   = "cloud-run-interservice-id"
   description  = "Identity used by a public Cloud Run service to call private Cloud Run services."
   display_name = "cloud-run-interservice-id"
