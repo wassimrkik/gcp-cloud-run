@@ -31,7 +31,18 @@ resource "google_cloud_run_v2_service" "default" {
           mount_path = "/cloudsql"
         }
       }
-
+      dynamic "env" {
+        for_each = local.secret_env_vars
+        content {
+          name = env.value.name
+          value_source {
+            secret_key_ref {
+              secret  = env.value.secret
+              version = "latest"
+            }
+          }
+        }
+      }
       dynamic "resources" {
         for_each = var.limits ? [1] : []
         content {

@@ -10,6 +10,7 @@ module "cori-fe" {
   domain            = "front.cloudwaves.net"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_fe.json"
+  secrets           = local.fe_service_secrets
 }
 
 module "cori-be" {
@@ -25,8 +26,9 @@ module "cori-be" {
   lb_name           = "back"
   domain            = "back.cloudwaves.net"
   service-account   = null
-  sql_password      = "testtesttest"
+  sql_password      = var.PGPASSWORD
   env_file_override = "${path.module}/envs/env_be.json"
+  secrets           = local.be_service_secrets
 }
 
 module "cori-addin" {
@@ -41,6 +43,7 @@ module "cori-addin" {
   domain            = "addin.cloudwaves.net"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_addin.json"
+  secrets           = local.addin_service_secrets
 }
 
 data "google_iam_policy" "private" {
@@ -66,3 +69,9 @@ resource "google_service_account" "default" {
   description  = "Identity used by a public Cloud Run service to call private Cloud Run services."
   display_name = "cloud-run-interservice-id"
 }
+
+# resource "google_project_iam_member" "secrets_access" {
+#   project = var.project_id
+#   role    = "roles/secretmanager.secretAccessor"
+#   member  = "serviceAccount:${google_service_account.default.email}"
+# }

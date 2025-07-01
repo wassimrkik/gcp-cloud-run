@@ -61,3 +61,8 @@ variable "env_file_override" {
   type    = string
   default = ""
 }
+
+variable "secrets" {
+  type    = map(string)
+  default = {}
+}

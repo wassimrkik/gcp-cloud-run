@@ -16,3 +16,13 @@ locals {
     }
   ]
 }
+
+
+locals {
+  secret_env_vars = [
+    for key in keys(var.secrets) : {
+      name   = key
+      secret = key
+    }
+  ]
+}

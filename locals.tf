@@ -1,0 +1,25 @@
+locals {
+  addin_service_secrets = {
+    SHAREPOINT_SECRET    = var.SHAREPOINT_SECRET
+    SHAREPOINT_CLIENT_ID = var.SHAREPOINT_CLIENT_ID
+    SHAREPOINT_TENANT_ID = var.SHAREPOINT_TENANT_ID
+  }
+  be_service_secrets = {
+    PGUSER                   = var.PGUSER
+    PGPASSWORD               = var.PGPASSWORD
+    API_KEY                  = var.API_KEY
+    LANGFUSE_SECRET_KEY      = var.LANGFUSE_SECRET_KEY
+    ENCRYPTION_KEY           = var.ENCRYPTION_KEY
+    EUROPE_PMC_API_KEY       = var.EUROPE_PMC_API_KEY
+    SEMANTIC_SCHOLAR_API_KEY = var.SEMANTIC_SCHOLAR_API_KEY
+    AZURE_CLIENT_SECRET      = var.AZURE_CLIENT_SECRET
+    LLAMA_CLOUD_API_KEY      = var.LLAMA_CLOUD_API_KEY
+    DO_SPACES_SECRET_KEY     = var.DO_SPACES_SECRET_KEY
+    DO_SPACES_ACCESS_KEY     = var.DO_SPACES_ACCESS_KEY
+  }
+  fe_service_secrets = {
+    AZURE_CLIENT_ID = var.AZURE_CLIENT_ID
+    AZURE_TENANT_ID = var.AZURE_TENANT_ID
+  }
+}
+
