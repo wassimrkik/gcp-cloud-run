@@ -17,7 +17,13 @@ resource "google_cloud_run_v2_service" "default" {
     }
     containers {
       image = "us-docker.pkg.dev/cloudrun/container/hello"
-
+      dynamic "env" {
+        for_each = local.env_list
+        content {
+          name  = env.value.name
+          value = env.value.value
+        }
+      }
       dynamic "volume_mounts" {
         for_each = var.database ? [1] : []
         content {

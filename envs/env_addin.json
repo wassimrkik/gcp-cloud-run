@@ -1,0 +1,9 @@
+{
+  "API_URL": "",
+  "UPLOADED_DOCUMENTS_TOKEN_LIMIT": 30000,
+  "SHAREPOINT_HOST_URL": "coriclinical.sharepoint.com",
+  "SHAREPOINT_MAIN_SITE": "sites/cori-clinical-dev",
+  "SHAREPOINT_SECRET": "xx",
+  "SHAREPOINT_CLIENT_ID": "xx3",
+  "SHAREPOINT_TENANT_ID": "fxx"
+}

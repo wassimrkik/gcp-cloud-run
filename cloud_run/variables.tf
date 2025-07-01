@@ -6,7 +6,7 @@ variable "repo-description" {
 }
 
 variable "service-name" {
-
+  type = string
 }
 
 variable "public_access" {
@@ -53,6 +53,11 @@ variable "service-account" {
 }
 
 variable "sql_password" {
-  type = string
+  type    = string
   default = "stronpassword"
+}
+
+variable "env_file_override" {
+  type    = string
+  default = ""
 }

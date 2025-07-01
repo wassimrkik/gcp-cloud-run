@@ -1,43 +1,46 @@
 module "cori-fe" {
-  source           = "./cloud_run"
-  repo-name        = "poc-fe"
-  repo-description = "repo for poc fe "
-  region           = "europe-west1"
-  service-name     = "fe-poc-cori"
-  public_access    = true
-  limits           = false
-  lb_name          = "front"
-  domain           = "front.cloudwaves.net"
-  service-account  = google_service_account.default.email
+  source            = "./cloud_run"
+  repo-name         = "poc-fe"
+  repo-description  = "repo for poc fe "
+  region            = "europe-west1"
+  service-name      = "fe-poc-cori"
+  public_access     = true
+  limits            = false
+  lb_name           = "front"
+  domain            = "front.cloudwaves.net"
+  service-account   = google_service_account.default.email
+  env_file_override = "${path.module}/envs/env_fe.json"
 }
 
 module "cori-be" {
-  source           = "./cloud_run"
-  repo-name        = "poc-be"
-  repo-description = "repo for poc be"
-  region           = "europe-west1"
-  service-name     = "be-poc-cori"
-  public_access    = false
-  limits           = false
-  database         = true
-  database_name    = "be-sql"
-  lb_name          = "back"
-  domain           = "back.cloudwaves.net"
-  service-account  = null
-  sql_password     = "testtesttest"
+  source            = "./cloud_run"
+  repo-name         = "poc-be"
+  repo-description  = "repo for poc be"
+  region            = "europe-west1"
+  service-name      = "be-poc-cori"
+  public_access     = false
+  limits            = false
+  database          = true
+  database_name     = "be-sql"
+  lb_name           = "back"
+  domain            = "back.cloudwaves.net"
+  service-account   = null
+  sql_password      = "testtesttest"
+  env_file_override = "${path.module}/envs/env_be.json"
 }
 
 module "cori-addin" {
-  source           = "./cloud_run"
-  repo-name        = "poc-add-in"
-  repo-description = "repo for poc word addin "
-  region           = "europe-west1"
-  service-name     = "addin-poc-cori"
-  public_access    = true
-  limits           = false
-  lb_name          = "addin"
-  domain           = "addin.cloudwaves.net"
-  service-account  = google_service_account.default.email
+  source            = "./cloud_run"
+  repo-name         = "poc-add-in"
+  repo-description  = "repo for poc word addin "
+  region            = "europe-west1"
+  service-name      = "addin-poc-cori"
+  public_access     = true
+  limits            = false
+  lb_name           = "addin"
+  domain            = "addin.cloudwaves.net"
+  service-account   = google_service_account.default.email
+  env_file_override = "${path.module}/envs/env_addin.json"
 }
 
 data "google_iam_policy" "private" {
