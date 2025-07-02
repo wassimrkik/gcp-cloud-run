@@ -54,6 +54,7 @@ variable "service-account" {
 
 variable "sql_password" {
   type    = string
+  default = "strongpass"
 }
 
 variable "env_file_override" {

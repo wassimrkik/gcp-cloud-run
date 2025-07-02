@@ -4,6 +4,49 @@ on:
   push:
 env:
     GCP_SA_KEY: ${{secrets.GCP_SA_KEY}}
+
+    TF_VAR_ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    TF_VAR_API_KEY: ${{ secrets.API_KEY }}
+    TF_VAR_AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+    TF_VAR_AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+    TF_VAR_AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+    TF_VAR_DO_SPACES_ACCESS_KEY: ${{ secrets.DO_SPACES_ACCESS_KEY }}
+    TF_VAR_DO_SPACES_SECRET_KEY: ${{ secrets.DO_SPACES_SECRET_KEY }}
+    TF_VAR_ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+    TF_VAR_FUTURE_HOUSE_API_KEY: ${{ secrets.FUTURE_HOUSE_API_KEY }}
+    TF_VAR_GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+    TF_VAR_LANGFUSE_SECRET_KEY: ${{ secrets.LANGFUSE_SECRET_KEY }}
+    TF_VAR_LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
+    TF_VAR_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    TF_VAR_PGPASSWORD: ${{ secrets.PGPASSWORD }}
+    TF_VAR_PGUSER: ${{ secrets.PGUSER }}
+    TF_VAR_SHAREPOINT_CLIENT_ID: ${{ secrets.SHAREPOINT_CLIENT_ID }}
+    TF_VAR_SHAREPOINT_SECRET: ${{ secrets.SHAREPOINT_SECRET }}
+    TF_VAR_SHAREPOINT_TENANT_ID: ${{ secrets.SHAREPOINT_TENANT_ID }}
+
+
+    TF_VAR_API_URL: ${{ vars.API_URL }}
+    TF_VAR_AZURE_REDIRECT_URI: ${{ vars.AZURE_REDIRECT_URI }}
+    TF_VAR_AZURE_SCOPE: ${{ vars.AZURE_SCOPE }}
+    TF_VAR_CLIENT_ID: ${{ vars.CLIENT_ID }}
+    TF_VAR_CONFIG_DIR: ${{ vars.CONFIG_DIR }}
+    TF_VAR_DO_SPACES_CHAT_SESSION_UPLOADS_BUCKET_NAME: ${{ vars.DO_SPACES_CHAT_SESSION_UPLOADS_BUCKET_NAME }}
+    TF_VAR_DO_SPACES_ENDPOINT_URL: ${{ vars.DO_SPACES_ENDPOINT_URL }}
+    TF_VAR_DO_SPACES_REGION_NAME: ${{ vars.DO_SPACES_REGION_NAME }}
+    TF_VAR_DO_SPACES_SESSION_UPLOADS_BUCKET_NAME: ${{ vars.DO_SPACES_SESSION_UPLOADS_BUCKET_NAME }}
+    TF_VAR_LANGFUSE_HOST: ${{ vars.LANGFUSE_HOST }}
+    TF_VAR_LANGFUSE_PUBLIC_KEY: ${{ vars.LANGFUSE_PUBLIC_KEY }}
+    TF_VAR_LLAMA_CLOUD_ORGANIZATION_ID: ${{ vars.LLAMA_CLOUD_ORGANIZATION_ID }}
+    TF_VAR_LLAMA_CLOUD_PROJECT_ID: ${{ vars.LLAMA_CLOUD_PROJECT_ID }}
+    TF_VAR_PGDATABASE: ${{ vars.PGDATABASE }}
+    TF_VAR_PGHOST: ${{ vars.PGHOST }}
+    TF_VAR_PGPORT: ${{ vars.PGPORT }}
+    TF_VAR_SHAREPOINT_HOST_URL: ${{ vars.SHAREPOINT_HOST_URL }}
+    TF_VAR_SHAREPOINT_MAIN_SITE: ${{ vars.SHAREPOINT_MAIN_SITE }}
+    TF_VAR_SUPERADMINS: ${{ vars.SUPERADMINS }}
+    TF_VAR_TIKTOKEN_MODEL_TOKENIZER: ${{ vars.TIKTOKEN_MODEL_TOKENIZER }}
+    TF_VAR_UPLOADED_DOCUMENTS_TOKEN_LIMIT: ${{ vars.UPLOADED_DOCUMENTS_TOKEN_LIMIT }}
+
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -16,7 +59,7 @@ jobs:
           uses: 'google-github-actions/auth@v2'
           with:
             credentials_json: '${{secrets.GCP_SA_KEY}}'
-            project_id: 'patricio-poc-1'
+            project_id: 'cori-clinical'
 
         - name: Install terraform
           run: |

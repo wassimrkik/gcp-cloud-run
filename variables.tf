@@ -84,6 +84,6 @@ variable "project_id" {
 }
 
 variable "domain" {
-  type = string
+  type    = string
   default = "cori-clinical.com"
 }

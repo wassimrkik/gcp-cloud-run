@@ -7,6 +7,7 @@ resource "google_secret_manager_secret" "secrets" {
 
     }
   }
+  depends_on = [google_cloud_run_v2_service.default]
 }
 
 resource "google_secret_manager_secret_version" "secret_versions" {

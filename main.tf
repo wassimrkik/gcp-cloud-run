@@ -25,7 +25,7 @@ module "cori-be" {
   database_name     = "be-sql"
   lb_name           = "back"
   domain            = "back.${var.domain}"
-  service-account   = null
+  service-account   = google_service_account.secret-accessor.email
   sql_password      = var.PGPASSWORD
   env_file_override = "${path.module}/envs/env_be.json"
   secrets           = local.be_service_secrets
@@ -70,8 +70,15 @@ resource "google_service_account" "default" {
   display_name = "cloud-run-interservice-id"
 }
 
-# resource "google_project_iam_member" "secrets_access" {
-#   project = var.project_id
-#   role    = "roles/secretmanager.secretAccessor"
-#   member  = "serviceAccount:${google_service_account.default.email}"
-# }
+
+resource "google_project_iam_member" "grant_secret_accessor" {
+  project = "cori-clinical"
+  role    = "roles/secretmanager.secretAccessor"
+  member  = "serviceAccount:${google_service_account.secret-accessor.email}"
+}
+
+resource "google_service_account" "secret-accessor" {
+  account_id   = "secret-accessor"
+  description  = "Identity used to access secrets"
+  display_name = "secret-accessor"
+}
