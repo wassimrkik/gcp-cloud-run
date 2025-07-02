@@ -3,7 +3,7 @@ resource "google_cloud_run_v2_service" "default" {
   location            = var.region
   deletion_protection = false
   ingress             = "INGRESS_TRAFFIC_ALL"
-
+  depends_on = [ google_secret_manager_secret.secrets, google_secret_manager_secret_version.secret_versions ]
   template {
     service_account = var.service-account
     dynamic "volumes" {

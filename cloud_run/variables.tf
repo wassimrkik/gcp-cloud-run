@@ -45,7 +45,7 @@ variable "lb_name" {
 }
 
 variable "project_id" {
-  default = "cori-clinical"
+  type = string
 }
 
 variable "service-account" {

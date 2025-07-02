@@ -2,7 +2,7 @@ module "cori-fe" {
   source            = "./cloud_run"
   repo-name         = "poc-fe"
   repo-description  = "repo for poc fe "
-  region            = "europe-west1"
+  region            = var.region
   service-name      = "fe-poc-cori"
   public_access     = true
   limits            = false
@@ -11,13 +11,15 @@ module "cori-fe" {
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_fe.json"
   secrets           = local.fe_service_secrets
+  project_id        = var.project_id
+  depends_on        = [null_resource.wait_for_iam_propagation]
 }
 
 module "cori-be" {
   source            = "./cloud_run"
   repo-name         = "poc-be"
   repo-description  = "repo for poc be"
-  region            = "europe-west1"
+  region            = var.region
   service-name      = "be-poc-cori"
   public_access     = false
   limits            = false
@@ -29,13 +31,14 @@ module "cori-be" {
   sql_password      = var.PGPASSWORD
   env_file_override = "${path.module}/envs/env_be.json"
   secrets           = local.be_service_secrets
+  project_id        = var.project_id
 }
 
 module "cori-addin" {
   source            = "./cloud_run"
   repo-name         = "poc-add-in"
   repo-description  = "repo for poc word addin "
-  region            = "europe-west1"
+  region            = var.region
   service-name      = "addin-poc-cori"
   public_access     = true
   limits            = false
@@ -44,6 +47,8 @@ module "cori-addin" {
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_addin.json"
   secrets           = local.addin_service_secrets
+  project_id        = var.project_id
+  depends_on        = [null_resource.wait_for_iam_propagation]
 }
 
 data "google_iam_policy" "private" {
@@ -56,8 +61,8 @@ data "google_iam_policy" "private" {
 }
 
 resource "google_cloud_run_service_iam_policy" "private" {
-  location    = "europe-west1"
-  project     = "cori-clinical"
+  location    = var.region
+  project     = var.project_id
   service     = "be-poc-cori"
   policy_data = data.google_iam_policy.private.policy_data
   depends_on  = [module.cori-be]
@@ -70,9 +75,14 @@ resource "google_service_account" "default" {
   display_name = "cloud-run-interservice-id"
 }
 
+resource "google_project_iam_member" "grant_secret_accessor_public" {
+  project = var.project_id
+  role    = "roles/secretmanager.secretAccessor"
+  member  = "serviceAccount:${google_service_account.default.email}"
+}
 
 resource "google_project_iam_member" "grant_secret_accessor" {
-  project = "cori-clinical"
+  project = var.project_id
   role    = "roles/secretmanager.secretAccessor"
   member  = "serviceAccount:${google_service_account.secret-accessor.email}"
 }
@@ -81,4 +91,16 @@ resource "google_service_account" "secret-accessor" {
   account_id   = "secret-accessor"
   description  = "Identity used to access secrets"
   display_name = "secret-accessor"
+}
+
+resource "null_resource" "wait_for_iam_propagation" {
+  provisioner "local-exec" {
+    command = "sleep 15"
+  }
+
+  triggers = {
+    always = timestamp() # ensures it runs every time
+  }
+
+  depends_on = [google_project_iam_member.grant_secret_accessor_public]
 }

@@ -1,9 +1,9 @@
 provider "google" {
-  project = "cori-clinical"
-  region  = "europe-west1"
+  project = var.project_id
+  region  = var.region
   #zone        = "europe-west9-a"
 }
 
 provider "google-beta" {
-  project = "cori-clinical"
+  project = var.project_id
 }

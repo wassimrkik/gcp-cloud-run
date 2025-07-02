@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "cori-terraform-tfstate"
-    prefix = "terraform/cori-state"
+    bucket = "wassim-test-1"
+    prefix = "terraform/state"
   }
 }
