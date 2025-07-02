@@ -79,7 +79,7 @@ variable "AZURE_TENANT_ID" {
 }
 
 variable "project_id" {
-  type    = string
+  type = string
   # default = "patricio-poc-1"
   default = "cori-clinical"
 }
