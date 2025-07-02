@@ -80,12 +80,13 @@ variable "AZURE_TENANT_ID" {
 
 variable "project_id" {
   type    = string
-  default = "patricio-poc-1"
+  # default = "patricio-poc-1"
+  default = "cori-clinical"
 }
 
 variable "domain" {
   type    = string
-  default = "cloudwaves.net"
+  default = "cori-clinical.com"
 }
 
 variable "region" {
