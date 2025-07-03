@@ -6,7 +6,7 @@ module "cori-fe" {
   service-name      = "fe-poc-cori"
   public_access     = true
   limits            = false
-  lb_name           = "front"
+  lb_name           = "app"
   domain            = "app.${var.domain}"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_fe.json"
@@ -26,7 +26,7 @@ module "cori-be" {
   limits            = false
   database          = true
   database_name     = "be-sql"
-  lb_name           = "back"
+  lb_name           = "api"
   domain            = "api.${var.domain}"
   service-account   = google_service_account.secret-accessor.email
   sql_password      = var.PGPASSWORD
@@ -44,7 +44,7 @@ module "cori-addin" {
   service-name      = "addin-poc-cori"
   public_access     = true
   limits            = false
-  lb_name           = "addin"
+  lb_name           = "office"
   domain            = "office.${var.domain}"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_addin.json"
