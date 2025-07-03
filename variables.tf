@@ -29,7 +29,7 @@ variable "API_KEY" {
 }
 
 variable "OPENAI_API_KEY" {
-  type = string
+  type      = string
   sensitive = true
 }
 
