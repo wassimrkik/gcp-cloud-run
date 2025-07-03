@@ -45,7 +45,7 @@ variable "lb_name" {
 }
 
 variable "project_id" {
-  default = "patricio-poc-1"
+  type = string
 }
 
 variable "service-account" {
@@ -54,7 +54,7 @@ variable "service-account" {
 
 variable "sql_password" {
   type    = string
-  default = "stronpassword"
+  default = "strongpass"
 }
 
 variable "env_file_override" {
