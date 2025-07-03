@@ -1,4 +1,4 @@
-name: TF Plan & Apply
+name: TF Destroy
 
 on:
   workflow_dispatch:
@@ -70,12 +70,7 @@ jobs:
             unzip terraform_${release}_linux_amd64.zip
             sudo mv terraform /usr/bin/terraform
 
-        - name: Plan
+        - name: Destroy
           run: |
             terraform init
-            terraform plan
-            
-        - name: apply    
-          run: |
-            terraform init
-            terraform apply --auto-approve
+            terraform destroy --auto-approve
