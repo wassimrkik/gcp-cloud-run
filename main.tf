@@ -7,10 +7,10 @@ module "cori-fe" {
   public_access     = true
   limits            = false
   lb_name           = "front"
-  domain            = "front.${var.domain}"
+  domain            = "app.${var.domain}"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_fe.json"
-  secrets           = local.fe_service_secrets
+  secrets           = null
   project_id        = var.project_id
   depends_on        = [null_resource.wait_for_iam_propagation]
   container_port    = 3000
@@ -27,7 +27,7 @@ module "cori-be" {
   database          = true
   database_name     = "be-sql"
   lb_name           = "back"
-  domain            = "back.${var.domain}"
+  domain            = "api.${var.domain}"
   service-account   = google_service_account.secret-accessor.email
   sql_password      = var.PGPASSWORD
   env_file_override = "${path.module}/envs/env_be.json"
@@ -45,7 +45,7 @@ module "cori-addin" {
   public_access     = true
   limits            = false
   lb_name           = "addin"
-  domain            = "addin.${var.domain}"
+  domain            = "office.${var.domain}"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_addin.json"
   secrets           = local.addin_service_secrets
