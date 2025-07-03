@@ -10,7 +10,7 @@ module "cori-fe" {
   domain            = "app.${var.domain}"
   service-account   = google_service_account.default.email
   env_file_override = "${path.module}/envs/env_fe.json"
-  secrets           = null
+  secrets           = local.fe_service_secrets
   project_id        = var.project_id
   depends_on        = [null_resource.wait_for_iam_propagation]
   container_port    = 3000
