@@ -22,7 +22,7 @@ module "cori-be" {
   repo-description  = "repo for poc be"
   region            = var.region
   service-name      = "be-poc-cori"
-  public_access     = false
+  public_access     = true
   limits            = false
   database          = true
   database_name     = "be-sql"
