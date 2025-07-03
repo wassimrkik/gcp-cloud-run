@@ -28,6 +28,11 @@ variable "API_KEY" {
   sensitive = true
 }
 
+variable "OPENAI_API_KEY" {
+  type = string
+  sensitive = true
+}
+
 variable "LANGFUSE_SECRET_KEY" {
   type      = string
   sensitive = true

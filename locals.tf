@@ -16,6 +16,7 @@ locals {
     LLAMA_CLOUD_API_KEY      = var.LLAMA_CLOUD_API_KEY
     DO_SPACES_SECRET_KEY     = var.DO_SPACES_SECRET_KEY
     DO_SPACES_ACCESS_KEY     = var.DO_SPACES_ACCESS_KEY
+    OPENAI_API_KEY = var.OPENAI_API_KEY
   }
   fe_service_secrets = {
   }
