@@ -1,5 +1,5 @@
 {
-  "API_URL": "",
+  "API_URL": "https://localhost:8000",
   "UPLOADED_DOCUMENTS_TOKEN_LIMIT": 30000,
   "SHAREPOINT_HOST_URL": "coriclinical.sharepoint.com",
   "SHAREPOINT_MAIN_SITE": "sites/cori-clinical-dev"

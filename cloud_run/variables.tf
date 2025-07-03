@@ -62,6 +62,9 @@ variable "env_file_override" {
   default = ""
 }
 
+variable "container_port" {
+  type = number
+}
 variable "secrets" {
   type    = map(string)
   default = {}

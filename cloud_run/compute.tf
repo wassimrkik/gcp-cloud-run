@@ -17,6 +17,9 @@ resource "google_cloud_run_v2_service" "default" {
     }
     containers {
       image = "us-docker.pkg.dev/cloudrun/container/hello"
+      ports {
+        container_port = var.container_port
+      }
       dynamic "env" {
         for_each = local.env_list
         content {

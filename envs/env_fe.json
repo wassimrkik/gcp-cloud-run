@@ -1,5 +1,5 @@
 {
-  "AZURE_SCOPE": "",
-  "AZURE_REDIRECT_URI": "",
-  "API_URL": ""
+  "AZURE_SCOPE": "api://localhost:3000/5b7e01f2-c357-4e6a-8c88-c09b4d50f052/access_as_user",
+  "AZURE_REDIRECT_URI": "http://localhost:5173/login",
+  "API_URL": "https://localhost:8000"
 }

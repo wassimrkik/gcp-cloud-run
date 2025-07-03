@@ -13,6 +13,7 @@ module "cori-fe" {
   secrets           = local.fe_service_secrets
   project_id        = var.project_id
   depends_on        = [null_resource.wait_for_iam_propagation]
+  container_port    = 3000
 }
 
 module "cori-be" {
@@ -32,6 +33,7 @@ module "cori-be" {
   env_file_override = "${path.module}/envs/env_be.json"
   secrets           = local.be_service_secrets
   project_id        = var.project_id
+  container_port    = 8000
 }
 
 module "cori-addin" {
@@ -49,6 +51,7 @@ module "cori-addin" {
   secrets           = local.addin_service_secrets
   project_id        = var.project_id
   depends_on        = [null_resource.wait_for_iam_propagation]
+  container_port    = 443
 }
 
 data "google_iam_policy" "private" {
