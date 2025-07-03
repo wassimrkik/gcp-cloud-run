@@ -18,8 +18,6 @@ locals {
     DO_SPACES_ACCESS_KEY     = var.DO_SPACES_ACCESS_KEY
   }
   fe_service_secrets = {
-    AZURE_CLIENT_ID = var.AZURE_CLIENT_ID
-    AZURE_TENANT_ID = var.AZURE_TENANT_ID
   }
 }
 
