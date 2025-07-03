@@ -28,6 +28,10 @@ variable "API_KEY" {
   sensitive = true
 }
 
+variable "FUTURE_HOUSE_API_KEY" {
+  type      = string
+  sensitive = true
+}
 variable "OPENAI_API_KEY" {
   type      = string
   sensitive = true
