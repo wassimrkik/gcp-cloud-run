@@ -1,6 +1,6 @@
 {
-    "PGHOST": "",
-    "PGPORT": "",
+    "PGHOST": "ep-odd-art-a435akfu-pooler.us-east-1.aws.neon.tech",
+    "PGPORT": 5432,
     "PGDATABASE": "cori_context",
     "LLAMA_CLOUD_PROJECT_ID": "",
     "LLAMA_CLOUD_ORGANIZATION_ID": "75094711-595d-4fba-bdef-70200082aed0",
@@ -9,15 +9,16 @@
     "TIKTOKEN_MODEL_TOKENIZER": "gpt-4o-mini",
     "UPLOADED_DOCUMENTS_TOKEN_LIMIT": 30000,
     "AZURE_TENANT_ID": "f7f12bc3-4738-4d50-b068-d8e6fc90458c",
-    "AZURE_CLIENT_ID": "5b7e01f2-c357-4e6a-8c88-c09b4d50f052",
-    "SUPERADMINS": "",
+    "AZURE_CLIENT_ID": "78fa1112-3d4f-4d25-afec-1e00bdd87254",
+    "SUPERADMINS": "patricio@cori-clinical.com,albert@cori-clinical.com,jorn@cori-clinical.com,luis@cori-clinical.com",
     "CLIENT_ID": "cori",
     "CONFIG_DIR": "config",
     "DO_SPACES_ENDPOINT_URL": "https://session-assets.fra1.digitaloceanspaces.com",
-    "DO_SPACES_REGION_NAME": "tra1",
+    "DO_SPACES_REGION_NAME": "fra1",
     "DO_SPACES_SESSION_UPLOADS_BUCKET_NAME": "sessions-assets",
     "DO_SPACES_CHAT_SESSION_UPLOADS_BUCKET_NAME": "chat-sessions",
     "LANGFUSE_PUBLIC_KEY": "pk-lf-04f37520-4446-4d69-98e0-d75acef0333e",
-    "LANGFUSE_HOST": "https://cloud.langfuse.com"
+    "LANGFUSE_HOST": "https://cloud.langfuse.com",
+    "DEFAULT_LLM_PROVIDER": "anthropic",
+    "ENV": "production"    
   }
-  
