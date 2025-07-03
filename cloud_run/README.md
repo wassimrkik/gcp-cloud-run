@@ -68,7 +68,7 @@ module "my_service" {
   domain  = "my-service.${var.domain}"
   ssl     = true
 }
-
+```
 ## 🔐 Secrets & Env Vars
 
 ### 🔸 Secrets
@@ -82,6 +82,8 @@ secrets = {
   API_KEY         = "abc123"
   ENCRYPTION_KEY  = "secret!"
 }
+```
+
 ## 🔸 Env File Override
 
 Use a JSON file to define environment variables:
@@ -93,6 +95,7 @@ Use a JSON file to define environment variables:
   "NODE_ENV": "production",
   "PORT": "8080"
 }
+```
 ## 🛢️ Cloud SQL (Optional)
 
 Enable by setting `database = true`:
@@ -139,6 +142,7 @@ This module uses the [`terraform-google-modules/lb-http`](https://github.com/ter
         ├── main.tf
         ├── variables.tf
         └── outputs.tf
+```
 
 ## 🔑 IAM Permissions Required
 
@@ -161,7 +165,7 @@ Ensure the user or service account running Terraform has the following roles:
   **Example:**
   ```bash
   export TF_VAR_API_KEY=abc123
-
+  ```
 
 ## 📄 Notes
 
