@@ -12,7 +12,6 @@ module "cori-fe" {
   env_file_override = "${path.module}/envs/env_fe.json"
   secrets           = local.fe_service_secrets
   project_id        = var.project_id
-  depends_on        = [null_resource.wait_for_iam_propagation]
   container_port    = 3000
 }
 
@@ -50,7 +49,6 @@ module "cori-addin" {
   env_file_override = "${path.module}/envs/env_addin.json"
   secrets           = local.addin_service_secrets
   project_id        = var.project_id
-  depends_on        = [null_resource.wait_for_iam_propagation]
   container_port    = 443
 }
 
