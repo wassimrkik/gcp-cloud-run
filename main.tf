@@ -63,13 +63,13 @@ data "google_iam_policy" "private" {
   }
 }
 
-resource "google_cloud_run_service_iam_policy" "private" {
-  location    = var.region
-  project     = var.project_id
-  service     = "be-poc-cori"
-  policy_data = data.google_iam_policy.private.policy_data
-  depends_on  = [module.cori-be]
-}
+# resource "google_cloud_run_service_iam_policy" "private" {
+#   location    = var.region
+#   project     = var.project_id
+#   service     = "be-poc-cori"
+#   policy_data = data.google_iam_policy.private.policy_data
+#   depends_on  = [module.cori-be]
+# }
 
 resource "google_service_account" "default" {
   depends_on   = [module.cori-be]
