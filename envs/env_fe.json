@@ -1,6 +1,6 @@
 {
   "AZURE_SCOPE": "api://office-addin-lu4iu.ondigitalocean.app/78fa1112-3d4f-4d25-afec-1e00bdd87254/access_as_user",
-  "AZURE_REDIRECT_URI": "https://webapp-xdefp.ondigitalocean.app/login",
+  "AZURE_REDIRECT_URI": "https://be-poc-cori-611462132827.europe-west1.run.app/login",
   "API_URL": "https://be-poc-cori-611462132827.europe-west1.run.app",
   "AZURE_TENANT_ID": "f7f12bc3-4738-4d50-b068-d8e6fc90458c",
   "AZURE_CLIENT_ID": "78fa1112-3d4f-4d25-afec-1e00bdd87254",

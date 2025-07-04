@@ -23,7 +23,7 @@ module "cori-be" {
   region            = var.region
   service-name      = "be-poc-cori"
   public_access     = true
-  limits            = false
+  limits            = true
   database          = true
   database_name     = "be-sql"
   lb_name           = "api"
