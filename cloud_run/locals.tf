@@ -1,6 +1,6 @@
 locals {
   # Extract type from name (assumes format like "cori-be")
-  service_type = regex("[^-]+-(.*)", var.service-name)[0]
+  service_type = try(regex("^[^-]+-([^-]+)-.*$", var.service-name)[0], var.service-name)
 
   # Build the file path dynamically
   env_file_path = var.env_file_override != "" ? var.env_file_override : "${path.root}/env_${local.service_type}.json"
