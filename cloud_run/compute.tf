@@ -16,7 +16,7 @@ resource "google_cloud_run_v2_service" "default" {
       }
     }
     containers {
-      image = "http://europe-west1-docker.pkg.dev/${var.project_id}/${var.service-name}/${var.service-name}:latest"
+      image = "europe-west1-docker.pkg.dev/${var.project_id}/${var.service-name}/${var.service-name}:latest"
       ports {
         container_port = var.container_port
       }
