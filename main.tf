@@ -3,7 +3,7 @@ module "cori-fe" {
   repo-name         = "poc-fe"
   repo-description  = "repo for poc fe "
   region            = var.region
-  service-name      = "fe-poc-cori"
+  service-name      = "app"
   public_access     = true
   limits            = false
   lb_name           = "app"
@@ -20,7 +20,7 @@ module "cori-be" {
   repo-name         = "poc-be"
   repo-description  = "repo for poc be"
   region            = var.region
-  service-name      = "be-poc-cori"
+  service-name      = "api"
   public_access     = true
   limits            = true
   database          = true
@@ -40,7 +40,7 @@ module "cori-addin" {
   repo-name         = "poc-add-in"
   repo-description  = "repo for poc word addin "
   region            = var.region
-  service-name      = "addin-poc-cori"
+  service-name      = "addin"
   public_access     = true
   limits            = false
   lb_name           = "office"
